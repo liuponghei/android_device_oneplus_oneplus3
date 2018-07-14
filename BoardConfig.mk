@@ -18,49 +18,55 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
--include vendor/oneplus/oneplus3/BoardConfigVendor.mk
+-include vendor/asus/Z01K/BoardConfigVendor.mk
 
-BOARD_PATH := device/oneplus/oneplus3
+BOARD_PATH := device/asus/Z01K
 
+# Bootloader
 TARGET_NO_BOOTLOADER := true
-TARGET_OTA_ASSERT_DEVICE := none
-TARGET_BOOTLOADER_BOARD_NAME := msm8996
-TARGET_USE_SDCLANG := true
+TARGET_BOOTLOADER_BOARD_NAME := sdm660
 
 # Platform
-TARGET_BOARD_PLATFORM := msm8996
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
+TARGET_BOARD_PLATFORM := sdm660
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno512
 
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := kryo
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := kryo
+TARGET_2ND_CPU_VARIANT := generic
 
+# Kernel
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8
+BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0 androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
+BOARD_KERNEL_CMDLINE += earlycon=msm_serial_dm,0xc170000 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
+BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=1
+BOARD_KERNEL_CMDLINE += user_debug=31 androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_CONFIG := ze554kl-userdebug-sdm660_defconfig
+TARGET_KERNEL_SOURCE := kernel/msm-4.4
+TARGET_KERNEL_APPEND_DTB := true
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
 
 ENABLE_CPUSETS := true
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.selinux=enforcing user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.bootdevice=624000.ufshc
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x02000000
-BOARD_RAMDISK_OFFSET     := 0x02200000
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8996
-TARGET_KERNEL_CONFIG := omni_oneplus3_defconfig
 
 # partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -79,7 +85,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Display
 BOARD_USES_ADRENO := true
-TARGET_QCOM_DISPLAY_VARIANT := caf-msm8996
+TARGET_QCOM_DISPLAY_VARIANT := caf-sdm660
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -97,8 +103,8 @@ TARGET_USES_HWC2 := true
 TARGET_USES_GRALLOC1 := true
 
 # Audio/media
-TARGET_QCOM_AUDIO_VARIANT := caf-msm8996
-TARGET_QCOM_MEDIA_VARIANT := caf-msm8996
+TARGET_QCOM_AUDIO_VARIANT := caf-sdm660
+TARGET_QCOM_MEDIA_VARIANT := caf-sdm660
 
 # audio
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
@@ -145,7 +151,7 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(BOARD_PATH)/bluetooth
 BOARD_HAS_QCA_BT_ROME := true
 QCOM_BT_USE_BTNV := true
-TARGET_QCOM_BLUETOOTH_VARIANT := caf-msm8996
+TARGET_QCOM_BLUETOOTH_VARIANT := caf-sdm660
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -169,7 +175,7 @@ TARGET_USES_INTERACTION_BOOST := true
 
 # libinit
 TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_oneplus3
+
 
 # liblights
 TARGET_PROVIDES_LIBLIGHT := true
