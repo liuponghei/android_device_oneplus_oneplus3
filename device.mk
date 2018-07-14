@@ -20,8 +20,8 @@
 # product configuration (apps).
 #
 
-$(call inherit-product, device/oneplus/oneplus3/hidl.mk)
-$(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
+$(call inherit-product, device/asus/Z01K/hidl.mk)
+$(call inherit-product, vendor/asus/Z01K/Z01K-vendor.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-2048-hwui-memory.mk)
 
@@ -99,10 +99,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Display
 PRODUCT_PACKAGES += \
-    copybit.msm8996 \
-    gralloc.msm8996 \
-    hwcomposer.msm8996 \
-    memtrack.msm8996 \
+    copybit.sdm660 \
+    gralloc.sdm660
+    hwcomposer.sdm660
+    memtrack.sdm660
     liboverlay \
     libtinyxml \
     libdisplayconfig
@@ -118,7 +118,7 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
-    audio.primary.msm8996 \
+    audio.primary.sdm660
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -150,7 +150,7 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    fingerprint.msm8996
+    fingerprint.sdm660
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -193,7 +193,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8996
+    lights.sdm660
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -210,7 +210,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
-    nfc_nci.msm8996 \
+    nfc_nci.sdm660 \
     NfcNci \
     Tag
 
@@ -253,7 +253,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_PACKAGES += \
-    thermal.msm8996
+    thermal.sdm660
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/vendor/etc/thermal-engine.conf \
@@ -303,7 +303,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.msm8996
+    sensors.sdm660
 
 # Netutils
 PRODUCT_PACKAGES += \
