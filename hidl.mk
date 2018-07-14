@@ -59,7 +59,7 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
-    android.hardware.power@1.0-service.oneplus3
+    android.hardware.power@1.0-service.Z01K
 
 # health
 PRODUCT_PACKAGES += \
